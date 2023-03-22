@@ -1,6 +1,6 @@
 import React from 'react'
 import {HandHoldingBulb3D} from "../assets"
-import { useNavigate, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function HomeHead() {
   return (

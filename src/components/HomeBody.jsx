@@ -1,9 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons' 
 import { NavLink } from 'react-router-dom'
+import {FigmaIpsum,LoremIpsum, OfficeIpsum, PizzaIpsum,PotterIpsum,} from "../assets"
 import Card from './Card'
-import {FigmaIpsum,LoremIpsum, OfficeIpsum, PirateIpsum, PizzaIpsum,PotterIpsum,} from "../assets"
+
+/*
+*  *  *
+
+Here, there are 2 types of cards, 
+  1) Defined by user
+  2) Predefined by us
+
+Due to this, the time ordering is only working on one type, the predefined ones.
+It can easily be applied on the user defined cards as well, but not on both of them at the same time.
+
+*  *  *
+*/
 
 function HomeBody() {
   const [active, setActive] = useState("1");
@@ -19,8 +32,7 @@ function HomeBody() {
     }
   }
 
-
-
+// Using Predefined values for all cards which are not added to the localStorage.
   let preDefinded = [    
     {"name":"Lorem Ipsum", "img":LoremIpsum, 
     "desc":"Lorem ipsum dolor sit amet consectetur. Auctor nibh eleifend tempus egestas libero tristique nec.",  
@@ -67,7 +79,6 @@ function HomeBody() {
         </div>
 
         <div className="cardFlex">
-
         {window.localStorage.getItem('Hackathons')!=null?JSON.parse(window.localStorage.getItem('Hackathons')).map((event) => {
             temp="/contest/"+event.inputs.title
             if(active=="2") {
@@ -82,35 +93,28 @@ function HomeBody() {
               }
             }
             else {
-              return (<>
-              <NavLink to={temp} style={{textDecoration: "none"}}>
-                <Card name={event.inputs.title} img={event.inputs[""]} date={event.curDate} desc={event.inputs.summary}/>
-              </NavLink>
+              return (
+              <>
+                <NavLink to={temp} style={{textDecoration: "none"}}>
+                  <Card name={event.inputs.title} img={event.inputs[""]} date={event.curDate} desc={event.inputs.summary}/>
+                </NavLink>
               </>
               );
             }
         }): console.log(temp)}
 
-        {    
-        preDefinded.sort((a, b) => increasing?b.date - a.date:a.date-b.date).map((event) => {
-          if(active=="2") {
-            
+        {preDefinded.sort((a, b) => increasing?b.date - a.date:a.date-b.date).map((event) => {
+          if(active=="2") { 
           }
           else {
             return (<>
-                {/* {console.log(event.name)} */}
                 <Card name={event.name} img={event.img} desc={event.desc} date={event.date}/>
               </>
             );
           }
-        })
-        }
-          
+        })}
         </div>
-
-              
-    </div>
-    
+    </div> 
   )
 }
 

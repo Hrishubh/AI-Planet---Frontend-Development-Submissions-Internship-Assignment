@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { AIPlanetLogo } from "../assets"
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (

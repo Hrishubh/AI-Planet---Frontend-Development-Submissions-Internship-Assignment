@@ -5,8 +5,8 @@ import HomeBody from "./HomeBody"
 function Home() {
   return (
     <>
-        <HomeHead />
-        <HomeBody />
+      <HomeHead />
+      <HomeBody />
     </>
   )
 }

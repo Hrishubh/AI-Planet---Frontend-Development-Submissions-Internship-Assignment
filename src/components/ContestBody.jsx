@@ -18,14 +18,12 @@ function ContestBody(title) {
     <div className='ContestBody margin_set'>
         <div className='ContestDetails' style={{flex:62}}>
             <h2>Description</h2>     
-              {    
-              curObj.inputs.description.map((event) => {
+              {curObj.inputs.description.map((event) => {
                 return (<>
                   <p>{event}</p>
                 </>
               );
-              })
-              }
+              })}
         </div>
         <div className='ContentSidebar' style={{flex: 27, paddingLeft: "10%"}}>
             <h2>Hackathon</h2>

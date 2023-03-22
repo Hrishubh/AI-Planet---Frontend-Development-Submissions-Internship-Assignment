@@ -1,22 +1,15 @@
 import React from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Delete({trigger,setTrigger,title }) {
-  
   const navigate = useNavigate();
   const del = () => {
     var curObj=[];
-    
-    
     setTrigger(false)
     var obj=JSON.parse(window.localStorage.getItem('Hackathons'))
     for(var i = 0; i < obj.length; i++){
-      if(obj[i].inputs.title == title.title){
-        continue;
-      }
-      else{
-        curObj.push(obj[i]);
-      }
+      if(obj[i].inputs.title == title.title){continue;}
+      else{curObj.push(obj[i]);}
     }
     window.localStorage.setItem('Hackathons',JSON.stringify(curObj));
     navigate('/');
@@ -33,7 +26,7 @@ function Delete({trigger,setTrigger,title }) {
         </div>
       </div>
     </div>
-  ) : "";
+  ) : <></>;
 }
 
 export default Delete

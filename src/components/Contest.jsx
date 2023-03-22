@@ -9,7 +9,6 @@ function Contest() {
   return (
     <>
       <ContestHead title={id} />
-      
       <ContestBody title={id}/>
     </>
   )
