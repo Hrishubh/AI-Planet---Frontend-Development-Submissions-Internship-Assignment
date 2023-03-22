@@ -68,7 +68,7 @@ function HomeBody() {
 
         <div className="cardFlex">
 
-        {JSON.parse(window.localStorage.getItem('Hackathons')).map((event) => {
+        {window.localStorage.getItem('Hackathons')!=null?JSON.parse(window.localStorage.getItem('Hackathons')).map((event) => {
             temp="/contest/"+event.inputs.title
             if(active=="2") {
               if(event.inputs.favourite){
@@ -89,7 +89,7 @@ function HomeBody() {
               </>
               );
             }
-        })}
+        }): console.log(temp)}
 
         {    
         preDefinded.sort((a, b) => increasing?b.date - a.date:a.date-b.date).map((event) => {
